@@ -151,9 +151,40 @@ RWTH Aachen University \\ % Your institution for the title page
 You \textit{may} find an error after the execution of a test.
 \end{block}
 \begin{block}{Verification}
-The evaluation of whether or not something complies with the
-specified conformance relation.
+The evaluation of whether or not something complies with a
+specified conformance property
 \end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Testing a robot}
+
+    \begin{columns}[c] % the "c" option specifies center vertical alignment
+    \column{.5\textwidth} % column designated by a command
+    \begin{block}{Test \color{red}``Don't kill me''}
+    \begin{itemize}
+      \item If the robot kills you, you can be sure that the property is not fulfilled.
+    \end{itemize}
+    \end{block}
+    \column{.5\textwidth}
+    \includegraphics[width=\textwidth]{../img/robot}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Verifying a robot}
+
+    \begin{columns}[c] % the "c" option specifies center vertical alignment
+    \column{.5\textwidth} % column designated by a command
+    \begin{block}{Test \color{red}``Don't kill me''}
+    \begin{itemize}
+      \item After verifying that a robot won't kill you, he will not kill you
+      ;)
+    \end{itemize}
+    \end{block}
+    \column{.5\textwidth}
+    \includegraphics[width=\textwidth]{../img/robot}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -170,19 +201,75 @@ given text, such as the complete works of William Shakespeare.\cite{monkey}
     \end{columns}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Model checking}
     \begin{columns}[c] % the "c" option specifies center vertical alignment
     \column{.5\textwidth} % column designated by a command
-    main = do
-    	putStrLn "What is the the answer to life the universe and everything?"
-    	answer <- getLine
-    	case answer of 
-    	"42" -> putStrLn "You're right"
-    		_	 -> putStrLn "Nope, try again" >> main 
+    \lstset{basicstyle=\footnotesize,showspaces=false,numbers=right, numbers=left, numbersep=-7pt,
+    numberstyle=\small, showstringspaces=false}
+    \begin{lstlisting}
+  main = do
+    putStrLn $ 
+         "What is the the"
+      ++ "answer to life"
+      ++ "the universe"
+      ++ "and everything?"
+    answer <- getLine
+    case answer of 
+      "42" -> 
+        putStrLn 
+           "You're right"
+      _	 -> 
+        putStrLn 
+           "Nope"
+    main 
+    \end{lstlisting}
     \column{.5\textwidth}
-    dtrn this is d
-    \end{columns}
+    \begin{figure}
+    \label{simpleTS}
+    \capition{Simple transition system}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.7cm,
+                    semithick, main node/.style={font=\small}]
+  \tikzstyle{every state}=[fill=yellow,draw=none,text=black]
+
+  \node[initial,state] (AA)                    {$q_2$};
+  \node[state]         (A)[below of=AA]       {$q_7$};
+  \node[state]         (B) [below right of=A] {$q_{10}$};
+  \node[state]         (D) [below left of=A] {$q_{13}$};
+
+  \path[every node/.style={font=\tiny}] 
+        (AA)edge              node {} (A)
+        (A) edge [bend left]  node {} (B)
+        (A) edge [bend right] node {} (D)
+        (D) edge [bend left]  node {} (AA)
+        (B) edge [bend right] node {} (AA);
+
+\end{tikzpicture}    
+    \end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Complexety of model checking}
+\begin{center}
+{\small
+\begin{tabular}{|p{3.3cm}|p{3.3cm}|p{3.3cm}|}
+    \hline
+    Real world TS &  & \textit{thousands} of states\\ \hline
+    \onslide<2->{Each State depends on the variables of the Programm & Real
+    world programs have thousands of variables & dimension of new TS $\approx
+    1000^{1000}$} \\
+    \hline
+    \onslide<3->{Time complexety of model checking algorithm is NP-hard &
+    $O(2^{TS})$ computation steps & $\approx 2^{1000^{1000}} \approx
+    10^{10^{3000}} cumputation steps$}\\
+    \hline
+    \onslide<4->{Number of atoms in the entire observable universe & &
+    $10^{80}$}\\
+    \hline
+    
+\end{tabular}}
+\end{center}
 \end{frame}
 
 \begin{frame}

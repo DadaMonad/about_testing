@@ -14,4 +14,11 @@
 	<natures>
 		<nature>net.sourceforge.texlipse.builder.TexlipseNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>sample.bib</name>
+			<type>1</type>
+			<location>H:/git/about_testing2/sample.bib</location>
+		</link>
+	</linkedResources>
 </projectDescription>
