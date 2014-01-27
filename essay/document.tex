@@ -1,5 +1,5 @@
-\documentclass{article}
-\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+\documentclass[a4paper, 12pt]{article} % Font size (can be 10pt, 11pt or 12pt)
+% and paper size (remove a4paper for US letter paper)
 
 \usepackage[protrusion=true,expansion=true]{microtype} % Better typography
 \usepackage{graphicx} % Required for including pictures
@@ -24,7 +24,8 @@
 
 \graphicspath{{./}{../img}}
 
-\linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+\linespread{1.85} % Change line spacing here, Palatino benefits from a slight
+% increase by default
 
 \makeatletter
 \renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
@@ -79,10 +80,35 @@ overall economy $ \$ 312 $  billion US-dollars because debugging is inefficient
 Many software companies still use trivial testing approaches like
 \textit{Monkey Testing}. More enhanced testing approaches could safe costs and 
 in addition make the software better. Moreover there are approaches to
-\textit{verify} that a software does not malfunction. But the crux of testing
-and verifying is expressing \textit{conformance}. 
+\textit{verify} that a software does not malfunction. However, the crux of
+testing and verifying is always expressing \textit{conformance}. 
 
-\begin{wrapfigure}{r}{0.4\textwidth} % Inline image example
+\section*{Testing}
+Until now most software developers write test cases for software by hand or just
+execute the program by themselves. They write test in the form of executable
+code. Obviously this is not the state of the art, but it is very easy. The
+technical term for this is \textit{Monkey Testing}.
+
+\subsection*{Monkey Testing}
+There are many forms of monkey testing. The crucial point of monkey testing ist
+that there is no definition of tests to execute. Developer and possibly testing
+employee execute the software product till they find a bug. 
+
+An interesting point is that Monkey Testing approach originates from an
+actual formal theorem: The \textit{Infinite Monkey Theorem} \cite{monkey}.
+Assumed we have infinitly many monkeys making random keystrokes on a typewriter
+machine. Then the Infinit Monkey Theorem states that almost
+certainly one of the monkeys writes the complete works of William Shakespeare.
+The expression ``almost certainly'' characterizes testing very good since we
+cannot be certain that testing finds all bugs in our software. This is due to
+the restriction of the size of a test suite (it cannot be of infinit size). 
+
+The downside of this approach is that there is no formal definition of
+conformance. If a program conforms relies on the intuition of the tester. 
+
+\subsection*{Model Based Testing}
+
+\begin{wrapfigure}{r}{0.5\textwidth} % Inline image example
 \caption{Candy machine specification}
 \label{candymachine}
 \begin{center}
@@ -105,13 +131,12 @@ and verifying is expressing \textit{conformance}.
 \end{tikzpicture}
 \end{center}
 \end{wrapfigure}
-\section*{Testing}
-Until now most software developers write test cases for software by hand or just
-execute the program by themselves. They write test in the form of executable
-code. Obviously this is not the state of the art. A more expressive definition
-of conformance is via an \textit{Labeled Transition System} (LTS).
-In figure \ref{candymachine} we express what a candy machine can do and cannot
-do in the form of a specification.
+In Model Based Testing (MBT) we express conformance via an \textit{Labeled
+Transition System} (LTS). Because transition systems have a theoretical
+background, information scientists are familiar with them. But also computer
+scientists need a lot of knowledge to express conformance in the form of an LTS. 
+In figure \ref{candymachine} we express a very abstract specification of what a candy
+machine can do and cannot do in the form of an LTS.
 \begin{enumerate}
   \item A candy machine starts in state $q_1$
   \item After the candy machine gets cash it must output a
@@ -120,18 +145,40 @@ do in the form of a specification.
   \item In state $q_4$ it must not output a kitkat and only accept cash.
 \end{enumerate}
 
-\section*{Conformance}
-There are various way to express conformance: 
+In MBT we can derive test cases automatically from the LTS. That is why MBT
+is one of the most advanced testing approaches nowadays. We can also exchange
+the software product since our test cases do not rely on it, and test a bad
+behaviour (e.g. ``do not explode'') on several products. 
+
+\section*{Model Checking}
+In contrast to testing Model Checking (MC) \textit{verifies} if a program
+conforms. This means that we are not only ``almost certain'' that a program
+conform - we are ``absolutely certain'' that a program conforms. Thus, if we
+test a very critical programm, we can be certain that it does not malfunction.
+Unfortunately this approach is not only very hard to implement, MC is sometimes
+impossible to compute. In theory the model checking of a program could take much
+more computation steps than there are atoms in the universe. Pioneering work was
+done by E. M. Clarke for what he received the Turing Award. A keywork of
+his work was defined checkable properties:
 \begin{enumerate}
   \item Statements like ``Never do {\color{red}this}'' are called
   \textit{persistent properties}
-  \item State
+  \item Statements like ``After doing {\color{red}this} you may do
+  {\color{blue}that} never again'' are called \textit{liveness properties}
 \end{enumerate}
 
+It may be unclear that this is exactly the behaviour that we want to check, but
+it can be shown that we can express every characterization of a program and
+therefore making MC the ultimate tool for conformance checking. However MC does
+still need a quite long time to compute even simple programs. 
 
 %------------------------------------------------
 
 \section*{Conclusion}
+In this essay we have shown the difference between testing and verifying. 
+Conformance checking is an important topic for the industry and therefore we
+should think more about how to do it more efficient. On account of this we have
+shown that we can do much better than Monkey Testing.
 
 \bibliographystyle{unsrt}
 
