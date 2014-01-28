@@ -74,7 +74,7 @@ circulation) it is evident that software bugs can cost lifes. Furthermore
 testing is important for the economy: In 2002 a study stated that software errors cost the U.S.
 economy $ \$59.5$ billion US-dollars annually, whereat most of this cost could
 be avoided by more exhaustive testing \cite{nist}. A recent study which was
-initiated by the Cambridge University states that software bugs cost the 
+initiated by Cambridge University states that software bugs cost the 
 overall economy $ \$ 312 $  billion US-dollars, because debugging is inefficient
 \cite{cambridge_errors}.
 Many software companies still use trivial testing approaches like
@@ -85,14 +85,13 @@ testing and verifying is always expressing \textit{conformance}.
 
 \section*{Testing}
 Until now most software developers write test cases for software by hand or just
-execute the program by themselves. They write test in the form of executable
-code. Obviously this is not the state of the art, but it is very easy. The
+execute the program by themselves. Obviously this is not the state of the art, but it is very easy. The
 technical term for this is \textit{Monkey Testing}.
 
 \subsection*{Monkey Testing}
 There are many forms of monkey testing. The crucial point of monkey testing ist
-that there is no definition of tests to execute. Developer and possibly testing
-employee execute the software product till they find a bug. 
+that there is no definition of tests to execute. The developer or possibly
+the testing employee execute the software product till they find a bug. 
 
 An interesting point is that Monkey Testing approach originates from an
 actual formal theorem: The \textit{Infinite Monkey Theorem} \cite{monkey}.
@@ -152,14 +151,14 @@ the software product since our test cases do not rely on it, and test a bad
 behaviour (e.g. ``do not explode'') on several products. 
 
 \section*{Model Checking}
-In contrast to testing, Model Checking (MC) \textit{verifies} if a program
-conforms. This means that we are not only ``almost certain'' that a program
+In contrast to MT and MBT, Model Checking (MC) \textit{verifies} if a
+program conforms. This means that we are not only ``almost certain'' that a program
 conforms, we are ``absolutely certain'' that a program conforms. Thus, if we
 check a very critical programm, we can be certain that it does not malfunction.
 Unfortunately this approach is not only very hard to implement, MC is sometimes
 impossible to compute. In theory the model checking of a program could take much
-more computation steps than there are atoms in the universe. Pioneering work was
-done by E. M. Clarke for what he received the Turing Award. A key result of
+more computation steps than there are atoms in the universe. Pioneering work has
+been done by E. M. Clarke for what he received the Turing Award. A key result of
 his work was the definition of checkable properties:
 \begin{itemize}
   \item Statements like ``Never do {\color{red}this}'' are called
