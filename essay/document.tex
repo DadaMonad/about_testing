@@ -75,11 +75,11 @@ testing is important for the economy: In 2002 a study stated that software error
 economy $ \$59.5$ billion US-dollars annually, whereat most of this cost could
 be avoided by more exhaustive testing \cite{nist}. A recent study which was
 initiated by the Cambridge University states that software bugs cost the 
-overall economy $ \$ 312 $  billion US-dollars because debugging is inefficient
+overall economy $ \$ 312 $  billion US-dollars, because debugging is inefficient
 \cite{cambridge_errors}.
 Many software companies still use trivial testing approaches like
 \textit{Monkey Testing}. More enhanced testing approaches could safe costs and 
-in addition make the software better. Moreover there are approaches to
+in addition make the software better. Moreover there are approaches that 
 \textit{verify} that a software does not malfunction. But the crux of
 testing and verifying is always expressing \textit{conformance}. 
 
@@ -153,23 +153,23 @@ behaviour (e.g. ``do not explode'') on several products.
 \section*{Model Checking}
 In contrast to testing, Model Checking (MC) \textit{verifies} if a program
 conforms. This means that we are not only ``almost certain'' that a program
-conform, we are ``absolutely certain'' that a program conforms. Thus, if we
+conforms, we are ``absolutely certain'' that a program conforms. Thus, if we
 check a very critical programm, we can be certain that it does not malfunction.
 Unfortunately this approach is not only very hard to implement, MC is sometimes
 impossible to compute. In theory the model checking of a program could take much
 more computation steps than there are atoms in the universe. Pioneering work was
-done by E. M. Clarke for what he received the Turing Award. A keywork of
-his work was defined checkable properties:
-\begin{enumerate}
+done by E. M. Clarke for what he received the Turing Award. A key result of
+his work was the definition of checkable properties:
+\begin{itemize}
   \item Statements like ``Never do {\color{red}this}'' are called
   \textit{persistent properties}
   \item Statements like ``After doing {\color{red}this} you may do
   {\color{blue}that} never again'' are called \textit{liveness properties}
-\end{enumerate}
+\end{itemize}
 
 It may be unclear that this is exactly the behaviour that we want to check, but
 it can be shown that we can express every characterization of a program and
-therefore making MC the ultimate tool for conformance checking. However MC does
+therefore MC is the ultimate tool for conformance checking. However MC does
 still need a quite long time to compute even simple programs. 
 
 %------------------------------------------------
